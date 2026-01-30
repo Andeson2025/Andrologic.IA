@@ -1,0 +1,12 @@
+ultralytics>=8.0.0
+opencv-python
+numpy
+pandas
+matplotlib
+tqdm
+deep-sort-realtime
+scipy
+jinja2
+flask
+flask-cors
+python-multipart

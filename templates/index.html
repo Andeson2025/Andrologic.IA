@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SpermAI — Análise de Esperma (Ovinos / Bovinos)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>SpermAI</h1>
+    <p class="lead">Suba um vídeo ou imagem de amostra microscópica e clique em Analisar. A IA fará detecção, rastreio e gerará relatório.</p>
+
+    <form id="uploadForm">
+      <div class="row">
+        <label>Arquivo (vídeo ou imagem)</label>
+        <input type="file" id="fileInput" name="file" accept="video/*,image/*" required />
+      </div>
+
+      <div class="row half">
+        <div>
+          <label>Micrômetros por pixel (µm/pixel)</label>
+          <input type="number" step="0.01" id="microns" name="microns_per_pixel" value="0.5" />
+        </div>
+        <div>
+          <label>FPS (frames por segundo)</label>
+          <input type="number" step="1" id="fps" name="fps" value="25" />
+        </div>
+      </div>
+
+      <div class="row half">
+        <div>
+          <label>Volume da gota (µL)</label>
+          <input type="number" step="0.1" id="volume" name="drop_volume_ul" value="2.0" />
+        </div>
+        <div>
+          <label>Confian��a YOLO (0-1)</label>
+          <input type="number" step="0.01" id="conf" name="conf" value="0.25" />
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="submit" id="submitBtn">Analisar</button>
+      </div>
+    </form>
+
+    <div id="progress" class="hidden">
+      <div class="spinner"></div>
+      <p>Processando... isso pode levar alguns minutos dependendo do vídeo e do seu hardware.</p>
+    </div>
+
+    <div id="results" class="hidden">
+      <h2>Resultados</h2>
+      <div id="summary"></div>
+      <div id="media">
+        <h3>Vídeo Processado</h3>
+        <video id="procVideo" controls width="640"></video>
+        <h3>Histogramas / Relatórios</h3>
+        <div id="links"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Rodar localmente — veja instruções no README. Desenvolvido para facilitar análises zootécnicas.</p>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
